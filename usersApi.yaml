@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  title: Users Micro Service API
+  description: A simple api for looking up users
+  version: 0.1.9
+servers:
+  - url: http://192.168.99.103:32080
+    description: K8 Development
+  - url: http://localhost:8080
+    description: localhost testing
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Basically what it says above.
+      responses: 
+        '200':
+          description: OK
+paths:
+  /user/{userId}:
+    get:
+      summary: Returns a user by ID.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: id for the requested user
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses: 
+        '200':
+          description: OK
